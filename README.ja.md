@@ -112,27 +112,24 @@ $$
 本リポジトリは、公開プロトコル仕様と独自のキャリブレーション・エンジンを分離している：
 
 * **Tier 1 — 公開プロトコル仕様（本リポジトリ / MIT License）：**
-
-  * `README.md` / `README.ja.md`：基本思想、構造モデル、および境界条件。
-
-  * `docs/01_architecture.en.md` / `.ja.md`：4層アーキテクチャ、10の敵対的攻撃へのカウンターパッチ、および学際的制御メカニズム。
-
-  * `docs/02_schema_api.en.md` / `.ja.md`：標準JSONスキーマ、`Threshold ZKP` インターフェース、および `Reinsurance Actuarial Feeds`（再保険数理フィード）。
-
-  * `docs/03_legal_onboarding.en.md` / `.ja.md`：2社間契約タームシート、国際仲裁フレームワーク、および Phase 1 → Phase 2 オンボーディングフロー。
-
-  * `ISSUES.en.md` / `ISSUES.ja.md`：未解決の法務、保険数理、暗号技術、および制御工学上の課題（`Issue #01` – `#16`）。
-
-  * `SECURITY.en.md` / `SECURITY.ja.md`：脆弱性報告ポリシーおよび Tier 2 機関向けアクセス手続き。
-
+  * [`README.md`](./README.md) / [`README.ja.md`](./README.ja.md)：基本思想、構造モデル、および境界条件。
+  * [`docs/01_architecture.en.md`](./docs/01_architecture.en.md) / [`.ja.md`](./docs/01_architecture.ja.md)：4層アーキテクチャ、10の敵対的攻撃へのカウンターパッチ、学際的制御メカニズム、およびシーケンス図。
+  * [`docs/02_schema_api.en.md`](./docs/02_schema_api.en.md) / [`.ja.md`](./docs/02_schema_api.ja.md)：標準JSONスキーマ、Threshold ZKP インターフェース、および Reinsurance Actuarial Feeds（再保険数理フィード）。
+  * [`docs/03_legal_onboarding.en.md`](./docs/03_legal_onboarding.en.md) / [`.ja.md`](./docs/03_legal_onboarding.ja.md)：2社間契約タームシート、国際仲裁フレームワーク、および Phase 1 → Phase 2 オンボーディングフロー。
+  * [`schemas/dynamic-credit-pass-v1.0.json`](./schemas/dynamic-credit-pass-v1.0.json) / [`telemetry-ingest-v1.0.json`](./schemas/telemetry-ingest-v1.0.json)：機械可読 JSON Schema（Draft 2020-12）バリデーション定義ファイル。
+  * [`ISSUES.en.md`](./ISSUES.en.md) / [`ISSUES.ja.md`](./ISSUES.ja.md)：未解決の法務、保険数理、暗号技術、および制御工学上の課題（`Issue #01` – `#16`）。
+  * [`CONTRIBUTING.md`](./CONTRIBUTING.md) / [`CONTRIBUTING.ja.md`](./CONTRIBUTING.ja.md)：外部コントリビューター向けガイドライン（ABMシミュレーション・法務ローカライズPR規定）。
+  * [`SECURITY.en.md`](./SECURITY.en.md) / [`SECURITY.ja.md`](./SECURITY.ja.md)：脆弱性報告ポリシー、PGP公開鍵、および Tier 2 機関向けアクセス手続き。
 * **Tier 2 — Foundry Core（非公開 / 機関向けアクセス）：**
-
   * `[Foundry Core / Proprietary Calibration]`：PID制御ゲイン、サーキットブレーカー閾値、パーコレーション集中曲線、沈黙ペナルティ基準分布、およびマスター署名インフラ。
+
+---
 
 ## 7. ガバナンスと機関向けアクセス
 
-* **エンジニア、アクチュアリー、法務研究者の方へ：** 制御ループのキャリブレーション、ZKP回路の最適化、および多国籍法域での契約ローカライズに関する未解決課題については `ISSUES.ja.md`（または `ISSUES.en.md`）を参照されたい。Tier 1 仕様に対する Pull Request を歓迎する。
+* **エンジニア、アクチュアリー、法務研究者の方へ：** 制御ループのキャリブレーション、ZKP回路の最適化、および多国籍法域での契約ローカライズに関する未解決課題については [`ISSUES.ja.md`](./ISSUES.ja.md)（または [`ISSUES.en.md`](./ISSUES.en.md)）を参照されたい。Tier 1 仕様に対する Pull Request を提出する前に [`CONTRIBUTING.ja.md`](./CONTRIBUTING.ja.md) を確認すること。
+* **金融機関・再保険会社・企業のお問い合わせ：** Tier 1 検証ノードの統合、または `[Foundry Core / Proprietary Calibration]` へのアクセスを希望する金融機関、再保険会社、および企業は、[`SECURITY.ja.md`](./SECURITY.ja.md) に記載された窓口より暗号化通信にて連絡されたい。
 
-* **金融機関・再保険会社・企業のお問い合わせ：** Tier 1 検証ノードの統合、または `[Foundry Core / Proprietary Calibration]` へのアクセスを希望する金融機関、再保険会社、および企業は、`SECURITY.ja.md` に記載された窓口より暗号化通信にて連絡されたい。
+---
 
 *執筆に関する注記：本プロトコルの基本公理、経済メカニズムデザイン、およびアーキテクチャの境界条件は人間のアーキテクトによって構想され、構造の定式化、数式表記の整形、および二言語技術ドキュメントの作成にはAIによる補助が利用されている。*
