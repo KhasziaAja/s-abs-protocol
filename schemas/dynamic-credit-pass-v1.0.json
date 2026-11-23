@@ -1,0 +1,253 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://s-abs.org/schemas/credit-pass/v1.0.json",
+  "title": "S-ABS Dynamic Credit Pass",
+  "description": "Machine-verifiable solvency and deterministic self-coverage cap credential (Tier 1 Public Schema).",
+  "type": "object",
+  "required": [
+    "$schema",
+    "pass_id",
+    "protocol_version",
+    "issued_at",
+    "expires_at",
+    "demurrage_half_life_active",
+    "entity",
+    "solvency_attestation",
+    "telemetry_metabolism",
+    "legal_settlement_binding",
+    "cryptographic_proof"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "format": "uri"
+    },
+    "pass_id": {
+      "type": "string",
+      "pattern": "^sabs:pass:[0-9a-fA-F-]{36}$"
+    },
+    "protocol_version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "issued_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "expires_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "demurrage_half_life_active": {
+      "type": "boolean"
+    },
+    "entity": {
+      "type": "object",
+      "required": [
+        "did",
+        "jurisdiction_primary",
+        "graph_independence_verified"
+      ],
+      "properties": {
+        "did": {
+          "type": "string",
+          "pattern": "^did:[a-z0-9]+:.+$"
+        },
+        "jurisdiction_primary": {
+          "type": "string",
+          "pattern": "^[A-Z]{2}$"
+        },
+        "graph_independence_verified": {
+          "type": "boolean"
+        }
+      }
+    },
+    "solvency_attestation": {
+      "type": "object",
+      "required": [
+        "tier",
+        "credit_rank",
+        "consecutive_clean_days",
+        "verified_cap_floor",
+        "collateral_profile"
+      ],
+      "properties": {
+        "tier": {
+          "type": "string",
+          "enum": [
+            "TIER_1_TELEMETRY",
+            "TIER_2_FULL_ESCROW"
+          ]
+        },
+        "credit_rank": {
+          "type": "string",
+          "enum": [
+            "AAA",
+            "AA",
+            "A",
+            "BBB",
+            "BB",
+            "B",
+            "CCC"
+          ]
+        },
+        "consecutive_clean_days": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "verified_cap_floor": {
+          "type": "object",
+          "required": [
+            "amount",
+            "currency",
+            "attestation_mode"
+          ],
+          "properties": {
+            "amount": {
+              "type": "number",
+              "minimum": 0
+            },
+            "currency": {
+              "type": "string",
+              "pattern": "^[A-Z]{3}$"
+            },
+            "attestation_mode": {
+              "type": "string",
+              "enum": [
+                "THRESHOLD_ZKP_BOUND",
+                "READ_ONLY_TELEMETRY"
+              ]
+            }
+          }
+        },
+        "collateral_profile": {
+          "type": "object",
+          "required": [
+            "multi_jurisdictional_dispersion",
+            "jurisdictions",
+            "asset_classes",
+            "yield_pass_through_enabled",
+            "min_timelock_hours"
+          ],
+          "properties": {
+            "multi_jurisdictional_dispersion": {
+              "type": "boolean"
+            },
+            "jurisdictions": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^[A-Z]{2}$"
+              },
+              "minItems": 1
+            },
+            "asset_classes": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": [
+                  "SOVEREIGN_DEBT",
+                  "PHYSICAL_BULLION_RWA",
+                  "INFRA_CAPACITY",
+                  "ESCROWED_CASH"
+                ]
+              }
+            },
+            "yield_pass_through_enabled": {
+              "type": "boolean"
+            },
+            "min_timelock_hours": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        }
+      }
+    },
+    "telemetry_metabolism": {
+      "type": "object",
+      "required": [
+        "provenance_oracle_bound",
+        "negative_entropy_bonus_active",
+        "silence_penalty_status"
+      ],
+      "properties": {
+        "provenance_oracle_bound": {
+          "type": "boolean"
+        },
+        "negative_entropy_bonus_active": {
+          "type": "boolean"
+        },
+        "silence_penalty_status": {
+          "type": "string",
+          "enum": [
+            "CLEAR",
+            "WARNING",
+            "HAIRCUT_APPLIED"
+          ]
+        }
+      }
+    },
+    "legal_settlement_binding": {
+      "type": "object",
+      "required": [
+        "framework",
+        "arbitration_seat",
+        "ny_convention_enforceable"
+      ],
+      "properties": {
+        "framework": {
+          "type": "string",
+          "const": "BILATERAL_LIQUIDATED_DAMAGES"
+        },
+        "arbitration_seat": {
+          "type": "string"
+        },
+        "ny_convention_enforceable": {
+          "type": "boolean"
+        }
+      }
+    },
+    "cryptographic_proof": {
+      "type": "object",
+      "required": [
+        "zkp_circuit_id",
+        "zkp_proof_hex",
+        "validator_quorum_signatures"
+      ],
+      "properties": {
+        "zkp_circuit_id": {
+          "type": "string"
+        },
+        "zkp_proof_hex": {
+          "type": "string",
+          "pattern": "^0x[0-9a-fA-F]+$"
+        },
+        "validator_quorum_signatures": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": [
+              "validator_id",
+              "staked_collateral_verified",
+              "signature"
+            ],
+            "properties": {
+              "validator_id": {
+                "type": "string"
+              },
+              "staked_collateral_verified": {
+                "type": "boolean"
+              },
+              "signature": {
+                "type": "string",
+                "pattern": "^0x[0-9a-fA-F]+$"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

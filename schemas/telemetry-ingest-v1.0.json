@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://s-abs.org/schemas/telemetry-ingest/v1.0.json",
+  "title": "S-ABS Provenance Oracle & Failure Telemetry Ingestion",
+  "description": "Standardized privacy-preserving telemetry schema for Negative Entropy Feedback and Silence Haircut evaluation.",
+  "type": "object",
+  "required": [
+    "$schema",
+    "telemetry_id",
+    "entity_did",
+    "timestamp",
+    "sector_code",
+    "provenance_verification",
+    "failure_entropy_metrics"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "format": "uri"
+    },
+    "telemetry_id": {
+      "type": "string",
+      "pattern": "^sabs:tel:[0-9a-fA-F-]{36}$"
+    },
+    "entity_did": {
+      "type": "string",
+      "pattern": "^did:[a-z0-9]+:.+$"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "sector_code": {
+      "type": "string",
+      "pattern": "^ISIC_[0-9]{4}_[A-Z0-9_]+$"
+    },
+    "provenance_verification": {
+      "type": "object",
+      "required": [
+        "hardware_tee_attested",
+        "thermodynamic_cost_verified",
+        "causal_lineage_root",
+        "integrity_score_normalized"
+      ],
+      "properties": {
+        "hardware_tee_attested": {
+          "type": "boolean"
+        },
+        "thermodynamic_cost_verified": {
+          "type": "boolean"
+        },
+        "causal_lineage_root": {
+          "type": "string",
+          "pattern": "^0x[0-9a-fA-F]{64}$"
+        },
+        "integrity_score_normalized": {
+          "type": "number",
+          "minimum": 0.0,
+          "maximum": 1.0
+        }
+      }
+    },
+    "failure_entropy_metrics": {
+      "type": "object",
+      "required": [
+        "event_type",
+        "payload_disclosed",
+        "zkp_frontier_expansion_proof"
+      ],
+      "properties": {
+        "event_type": {
+          "type": "string",
+          "enum": [
+            "BOUNDARY_EXPLORATION_FAILURE",
+            "NEAR_MISS_ANOMALY",
+            "STRESS_TEST_BREACH",
+            "POST_MORTEM_REMEDIATION"
+          ]
+        },
+        "payload_disclosed": {
+          "type": "boolean"
+        },
+        "zkp_frontier_expansion_proof": {
+          "type": "string",
+          "pattern": "^0x[0-9a-fA-F]+$"
+        }
+      }
+    }
+  }
+}
