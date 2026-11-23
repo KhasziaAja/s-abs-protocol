@@ -104,12 +104,14 @@ Where:
 This repository separates open protocol specifications from proprietary calibration engines:
 
 * **Tier 1 — Public Protocol Specification (This Repository / MIT License):**
-  * `README.md` / `README.ja.md`: Core philosophy, structural model, and boundaries.
-  * `docs/01_architecture.en.md` / `.ja.md`: Four-layer architecture, 10 adversarial counter-patches, and interdisciplinary control mechanisms.
-  * `docs/02_schema_api.en.md` / `.ja.md`: Standard JSON schemas, `Threshold ZKP` interfaces, and `Reinsurance Actuarial Feeds`.
-  * `docs/03_legal_onboarding.en.md` / `.ja.md`: Bilateral contract term sheets, arbitration framework, and Phase 1 → Phase 2 onboarding flow.
-  * `ISSUES.en.md` / `ISSUES.ja.md`: Open legal, actuarial, cryptographic, and control-engineering challenges (`Issue #01` – `#16`).
-  * `SECURITY.en.md` / `SECURITY.ja.md`: Vulnerability disclosure policy and Tier 2 institutional access procedures.
+  * [`README.md`](./README.md) / [`README.ja.md`](./README.ja.md): Core philosophy, structural model, and boundaries.
+  * [`docs/01_architecture.en.md`](./docs/01_architecture.en.md) / [`.ja.md`](./docs/01_architecture.ja.md): Four-layer architecture, 10 adversarial counter-patches, interdisciplinary control mechanisms, and sequence diagrams.
+  * [`docs/02_schema_api.en.md`](./docs/02_schema_api.en.md) / [`.ja.md`](./docs/02_schema_api.ja.md): Standard JSON schemas, Threshold ZKP interfaces, and Reinsurance Actuarial Feeds.
+  * [`docs/03_legal_onboarding.en.md`](./docs/03_legal_onboarding.en.md) / [`.ja.md`](./docs/03_legal_onboarding.ja.md): Bilateral contract term sheets, arbitration framework, and Phase 1 → Phase 2 onboarding flow.
+  * [`schemas/dynamic-credit-pass-v1.0.json`](./schemas/dynamic-credit-pass-v1.0.json) / [`telemetry-ingest-v1.0.json`](./schemas/telemetry-ingest-v1.0.json): Machine-readable JSON Schema (Draft 2020-12) validation definitions.
+  * [`ISSUES.en.md`](./ISSUES.en.md) / [`ISSUES.ja.md`](./ISSUES.ja.md): Open legal, actuarial, cryptographic, and control-engineering challenges (`Issue #01` – `#16`).
+  * [`CONTRIBUTING.md`](./CONTRIBUTING.md) / [`CONTRIBUTING.ja.md`](./CONTRIBUTING.ja.md): Guidelines for external contributors, ABM simulations, and legal localization PRs.
+  * [`SECURITY.en.md`](./SECURITY.en.md) / [`SECURITY.ja.md`](./SECURITY.ja.md): Vulnerability disclosure policy, PGP public key, and Tier 2 institutional access procedures.
 * **Tier 2 — Foundry Core (Private / Institutional Access):**
   * `[Foundry Core / Proprietary Calibration]`: PID control gains, circuit-breaker thresholds, percolation concentration curves, silence-penalty baselines, and master signing infrastructure.
 
@@ -117,8 +119,8 @@ This repository separates open protocol specifications from proprietary calibrat
 
 ## 7. Governance & Institutional Access
 
-* **For Engineers, Actuaries & Legal Researchers:** Review `ISSUES.en.md` for open challenges in control-loop calibration, ZKP circuit optimization, and multi-jurisdictional contract localization. Pull requests on Tier 1 specifications are welcome.
-* **For Institutional & Reinsurance Inquiries:** Financial institutions, reinsurers, and enterprises seeking Tier 1 validator integration or `[Foundry Core / Proprietary Calibration]` access may initiate encrypted contact via `SECURITY.en.md`.
+* **For Engineers, Actuaries & Legal Researchers:** Review [`ISSUES.en.md`](./ISSUES.en.md) for open challenges in control-loop calibration, ZKP circuit optimization, and multi-jurisdictional contract localization. Please read [`CONTRIBUTING.md`](./CONTRIBUTING.md) before submitting Pull Requests on Tier 1 specifications.
+* **For Institutional & Reinsurance Inquiries:** Financial institutions, reinsurers, and enterprises seeking Tier 1 validator integration or `[Foundry Core / Proprietary Calibration]` access may initiate encrypted contact via [`SECURITY.en.md`](./SECURITY.en.md).
 
 ---
 
