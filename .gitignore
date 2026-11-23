@@ -1,0 +1,33 @@
+# ==========================================
+# S-ABS Protocol Security & Tier 2 Isolation
+# NEVER commit Tier 2 calibration or internal notes
+# ==========================================
+
+# Tier 2 Proprietary / Secret Files
+*SECRET*
+*secret*
+*INTERNAL*
+*internal*
+*Foundry_Core*
+*foundry_core*
+CORE_CALIBRATION*
+INTERNAL_NOTES*
+
+# Private Keys, Certificates & PGP Secrets
+*.pem
+*.key
+*.p12
+*.pfx
+*.asc
+*private*
+
+# Environment & Local Configs
+.env
+.env.*
+*.local
+
+# OS & Editor Artifacts
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
